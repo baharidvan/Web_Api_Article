@@ -1,0 +1,30 @@
+﻿@model List<ArticleResponseModel>
+
+
+<a asp-action="CreateArticle" asp-controller="Home" > Add New Article</a>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach(var article in Model)
+    {
+        <tr>
+            <td>@article.Id</td>
+            <td>@article.Name</td>
+            <td>@article.Price</td>
+            <td>@article.Author</td>
+            <td>@article.Publisher</td>
+            <td>
+                <a asp-action="UpdateArticle" asp-controller="Home" asp-route-id="@article.Id">Update</a>
+                <a asp-action="RemoveArticle" asp-controller="Home" asp-route-id="@article.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

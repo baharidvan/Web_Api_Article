@@ -1,0 +1,44 @@
+﻿@model ArticleRequestModel
+
+<html>
+<head>
+    <title>Update Article</title>
+</head>
+<body>
+
+
+    @if (TempData["errorMessage"] != null)
+    {
+        <p style="color:red;">
+            @TempData["errorMessage"]?.ToString()
+        </p>
+    }
+
+
+    <h1>UPDATE ARTICLE</h1>
+    <form asp-action="UpdateArticle" asp-controller="Home" method="post">
+        <input type="hidden" asp-for="@Model.Id"/>
+        <label>Article Name:</label>
+        <input type="text" asp-for="@Model.Name" />
+        <br />
+        <hr />
+        <label>Author:</label>
+        <input type="text" asp-for="@Model.Author" />
+        <br />
+        <hr />
+        <label>Publisher:</label>
+        <input type="text" asp-for="@Model.Publisher" />
+        <br />
+        <hr />
+        <label>Price:</label>
+        <input type="text" asp-for="@Model.Price" />
+        <br />
+        <hr />
+
+        <div>
+            <a asp-action="Index" asp-controller="Home"> Back to Home</a>
+            <button type="submit">UPDATE</button>
+        </div>
+    </form>
+</body>
+</html>    
