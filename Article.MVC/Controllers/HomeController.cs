@@ -1,5 +1,6 @@
 ﻿
 using Article.MVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace Article.MVC.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         
@@ -17,7 +19,6 @@ namespace Article.MVC.Controllers
         {
             httpClientFactory = _httpClientFactory;
         }
-
         public async Task<IActionResult> Index()
         {
             var client = httpClientFactory.CreateClient();
@@ -34,12 +35,12 @@ namespace Article.MVC.Controllers
                 return View(null);
             }
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateArticle()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateArticle(ArticleRequestModel model)
         {
@@ -58,7 +59,7 @@ namespace Article.MVC.Controllers
                 return View(responseMessage);
             }
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateArticle(int id)
         {
             var client = httpClientFactory.CreateClient();
@@ -74,7 +75,7 @@ namespace Article.MVC.Controllers
                 return View(null);
             }
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> UpdateArticle(ArticleRequestModel model)
         {
@@ -91,7 +92,7 @@ namespace Article.MVC.Controllers
                 return View(model);
             }
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveArticle(int id)
         {
             var client = httpClientFactory.CreateClient();

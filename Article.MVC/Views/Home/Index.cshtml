@@ -1,9 +1,9 @@
 ﻿@model List<ArticleResponseModel>
 
 
-<a asp-action="CreateArticle" asp-controller="Home" > Add New Article</a>
+<a class="btn btn-primary" asp-action="CreateArticle" asp-controller="Home" > Add New Article</a>
 
-<table>
+<table class ="table table-striped mt-2">
     <tr>
         <th></th>
         <th>Name</th>
@@ -22,8 +22,8 @@
             <td>@article.Author</td>
             <td>@article.Publisher</td>
             <td>
-                <a asp-action="UpdateArticle" asp-controller="Home" asp-route-id="@article.Id">Update</a>
-                <a asp-action="RemoveArticle" asp-controller="Home" asp-route-id="@article.Id">Delete</a>
+                <a class="btn btn-warning" asp-action="UpdateArticle" asp-controller="Home" asp-route-id="@article.Id">Update</a>
+                <a class="btn btn-danger" asp-action="RemoveArticle" asp-controller="Home" asp-route-id="@article.Id">Delete</a>
             </td>
         </tr>
     }

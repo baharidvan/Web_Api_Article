@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<CompanyListModel>
+
+    <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <form asp-action="GetInviteCode" method="post">
+            <input type="hidden" asp-for="@item.Id" name="Id" />
+            <input type="hidden" asp-for="@item.Name" name="Name" />        
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <button asp-action="GetInviteCode" type="submit" class="btn btn-success"> Get Invite Code </button>
+                </td>
+             </tr>
+        </form>
+        }
+    </tbody>
+</table>
+

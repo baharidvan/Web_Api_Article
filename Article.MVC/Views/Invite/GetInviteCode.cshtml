@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model InviteCodeModel
+
+    <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Invite Code</th>
+        </tr>
+    </thead>
+    <tbody> 
+        <tr>
+            <td>
+                @Model.CompanyName
+            </td>
+            <td>
+                @Model.InviteCode
+            </td>
+            </tr>
+    </tbody>
+</table>
+
+

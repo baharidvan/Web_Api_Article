@@ -1,0 +1,30 @@
+﻿@model List<AppUser>
+@{
+    Layout = "_Layout";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email Adress</th>
+            <th>Company</th>
+            <th>Role Info</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.CompanyName</td>   
+            <td><getUserInfo user-id="@item.Id"></getUserInfo></td>   
+            <td>
+                <a asp-action="AssignRole" asp-route-id="@item.Id">Assign Role</a>
+            </td>
+        </tr>
+        }
+        
+    </tbody>
+</table>
